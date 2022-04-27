@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import auth from "../../../../Firebase/Firebase.init";
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user] = useAuthState(auth);
   return (
     <nav className="h-16 md:bg-slate-500 bg-purple-600 md:bg-transparent z-50 flex md:flex-row relative justify-between items-center md:px-7">
       <div className="">
@@ -72,36 +76,49 @@ const NavBar = () => {
             Blog
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-white md:text-emerald-600" : ""
-            }
-            to="/register"
-          >
-            Register
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-white md:text-emerald-600" : ""
-            }
-            to="/login"
-          >
-            Log In
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-white md:text-emerald-600" : ""
-            }
-            to="/admin"
-          >
-            Admin
-          </NavLink>
-        </li>
+        {user ? (
+          <>
+            <li>
+              <NavLink
+                title={user?.displayName}
+                className={({ isActive }) =>
+                  isActive ? "text-white md:text-emerald-600" : ""
+                }
+                to="/admin"
+              >
+                Admin
+              </NavLink>
+            </li>
+            <li>
+              <NavLink onClick={() => signOut(auth)} to="/login">
+                Sin out
+              </NavLink>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-white md:text-emerald-600" : ""
+                }
+                to="/register"
+              >
+                Register
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-white md:text-emerald-600" : ""
+                }
+                to="/login"
+              >
+                Log In
+              </NavLink>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );
