@@ -6,3 +6,4 @@
 > - npm install -D tailwindcss postcss autoprefixer
 > - npm install react-icons --save
 > - npm install --save react-firebase-hooks
+> - npm install react-hook-form
