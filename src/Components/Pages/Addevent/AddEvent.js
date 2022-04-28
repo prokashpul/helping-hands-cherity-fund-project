@@ -33,7 +33,7 @@ const AddEvent = () => {
           <div className="w-full">
             <div className="form-group w-full">
               <label className="text-xl" htmlFor="name">
-                Event Title
+                Event Title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -43,12 +43,12 @@ const AddEvent = () => {
                 className="w-full border-2 p-2 rounded-md my-2 border-slate-700"
               />
               <p className="text-red-500">
-                {errors.eventName && <span>This field is required</span>}
+                {errors.name && <span>This field is required </span>}
               </p>
             </div>
             <div className="form-group w-full">
               <label className="text-xl" htmlFor="description">
-                Description
+                Description <span className="text-red-500">*</span>
               </label>
               <textarea
                 className="w-full border-2 p-2 rounded-md my-2 border-slate-700"
@@ -58,14 +58,14 @@ const AddEvent = () => {
                 {...register("description", { required: true })}
               />
               <p className="text-red-500">
-                {errors.description && <span>This field is required</span>}
+                {errors.description && <span>This field is required </span>}
               </p>
             </div>
           </div>
           <div className="w-full">
             <div className="form-group w-full">
               <label className="text-xl" htmlFor="date">
-                Event Date
+                Event Date <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -75,12 +75,12 @@ const AddEvent = () => {
                 className="w-full border-2 p-2 rounded-md my-2 border-slate-700"
               />
               <p className="text-red-500">
-                {errors.date && <span>This field is required</span>}
+                {errors.date && <span>This field is required </span>}
               </p>
             </div>
             <div className="form-group w-full">
               <label className="text-xl" htmlFor="image">
-                Photo Url
+                Photo Url <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -90,7 +90,7 @@ const AddEvent = () => {
                 className="w-full border-2 p-2 rounded-md my-2 border-slate-700"
               />
               <p className="text-red-500">
-                {errors.image && <span>This field is required</span>}
+                {errors.image && <span>This field is required </span>}
               </p>
             </div>
           </div>

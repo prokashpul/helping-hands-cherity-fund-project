@@ -24,7 +24,7 @@ const Admin = () => {
                 className={({ isActive }) =>
                   isActive ? "text-white md:text-emerald-600" : ""
                 }
-                to="/admin"
+                to="/admin/add-event"
               >
                 <div className="flex items-center gap-2 text-xl ">
                   <HiPlus /> <span>Add event</span>
