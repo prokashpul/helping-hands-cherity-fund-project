@@ -18,7 +18,7 @@ const AddEvent = () => {
     axios.post("http://localhost:5000/events", events).then((res) => {
       const { data } = res;
       if (data?.insertedId) {
-        alert("Thank you for order");
+        alert("post successfully created");
       }
     });
 
